@@ -18,13 +18,6 @@ export const App = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
-  useEffect(() => {
-    const storedContacts = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (storedContacts) {
-      setContacts(JSON.parse(storedContacts));
-    }
-  }, []);
-
   const onFormSubmit = newContact => {
     const hasContact = contacts.some(({ id }) => id === newContact.id);
 
