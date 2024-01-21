@@ -19,7 +19,10 @@ export const App = () => {
   }, [contacts]);
 
   const onFormSubmit = newContact => {
-    const hasContact = contacts.some(({ id }) => id === newContact.id);
+    const hasContact = contacts.some(
+      ({ name }) =>
+        name.toLowerCase().trim() === newContact.name.toLowerCase().trim()
+    );
 
     if (hasContact) {
       alert(`${newContact.name} is already in contacts`);
