@@ -7,6 +7,8 @@ import {
   SubmitBtn,
   ValidationError,
 } from './PhoneBookForm.styled';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactSlice';
 
 const PhoneBookSchema = Yup.object().shape({
   name: Yup.string().min(3, 'To short!').required('This field is required!'),
@@ -16,7 +18,8 @@ const PhoneBookSchema = Yup.object().shape({
     .required('This field is required!'),
 });
 
-export const PhoneBookForm = ({ onAddContact }) => {
+export const PhoneBookForm = () => {
+  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={{
@@ -25,7 +28,7 @@ export const PhoneBookForm = ({ onAddContact }) => {
       }}
       validationSchema={PhoneBookSchema}
       onSubmit={(value, helper) => {
-        onAddContact(value);
+        dispatch(addContact(value));
         helper.resetForm({
           values: {
             name: '',
