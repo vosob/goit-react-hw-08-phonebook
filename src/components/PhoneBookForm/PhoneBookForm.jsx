@@ -24,10 +24,6 @@ export const PhoneBookForm = () => {
   const isLoading = useSelector(getIsLoading);
   const contacts = useSelector(state => state.contact.contacts.items);
 
-  const isContactExists = contacts.some(
-    contact => contact.name.toLowerCase() === contacts.name
-  );
-
   return (
     <Formik
       initialValues={{
@@ -36,8 +32,16 @@ export const PhoneBookForm = () => {
       }}
       validationSchema={PhoneBookSchema}
       onSubmit={(value, helper) => {
-        if (!isContactExists) {
-          alert('The contact already exists!!');
+        const actualedName = contacts.map(el => el.name.toLowerCase());
+        const actualedNumber = contacts.map(el => el.number);
+        const normalizedName = value.name.toLowerCase();
+        const isAdded =
+          actualedName.includes(normalizedName) ||
+          actualedNumber.some(num => value.number.includes(num));
+
+        if (isAdded) {
+          alert('The contact is already in contacts!');
+          return;
         } else {
           dispatch(addContact(value));
         }

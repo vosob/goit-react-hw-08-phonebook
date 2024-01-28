@@ -24,9 +24,10 @@ const Contacts = () => {
 
   return (
     <List>
-      {filteredContacts.map(({ name, id, phone }) => (
+      {filteredContacts.map(({ name, id, number, phone }) => (
         <ListItem key={id}>
-          {name} {phone}
+          {/* {number ?? phone} */}
+          {name} {number}
           <DelBtn
             disabled={isLoading}
             type="button"
