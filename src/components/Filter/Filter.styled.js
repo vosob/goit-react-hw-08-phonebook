@@ -7,13 +7,13 @@ export const FilterContainer = styled.div`
 export const FilterLabal = styled.label`
   font-size: 18px;
   display: inline-block;
-  width: 300px;
+  width: 325px;
   color: #2a2a2a;
   font-weight: 600;
 `;
 
 export const FilterInput = styled.input`
-  width: 300px;
+  width: 325px;
   display: block;
   height: 35px;
   margin-top: 5px;

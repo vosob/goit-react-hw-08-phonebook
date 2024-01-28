@@ -9,7 +9,7 @@ export const ListItem = styled.li`
   padding-bottom: 5px;
   font-size: 16px;
   font-weight: 500;
-  width: 300px;
+  width: 325px;
   display: flex;
   justify-content: space-between;
   align-items: center;

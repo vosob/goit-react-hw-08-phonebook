@@ -11,7 +11,7 @@ export const ContactsBookInput = styled(Field)`
   margin-top: 5px;
   margin-bottom: 5px;
   margin-right: 25px;
-  width: 300px;
+  width: 325px;
   height: 35px;
   display: flex;
 `;
@@ -26,7 +26,7 @@ export const Text = styled.p`
 `;
 
 export const SubmitBtn = styled.button`
-  width: 300px;
+  width: 325px;
   margin-left: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
