@@ -11,6 +11,7 @@ const Contacts = () => {
 
   useEffect(() => {
     dispatch(fetchContacts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filter = useSelector(state => state.filter.filter);
