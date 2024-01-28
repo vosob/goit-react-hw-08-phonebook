@@ -7,16 +7,17 @@ const reducer = {
   filter: filterReducer,
 };
 
-const getItemLS = () => {
-  const storedContacts = localStorage.getItem('contacts');
-  return storedContacts ? JSON.parse(storedContacts) : {};
-};
+// const getItemLS = () => {
+//   const storedContacts = localStorage.getItem('contacts');
+//   return storedContacts ? JSON.parse(storedContacts) : {};
+// };
+
 export const store = configureStore({
   reducer,
-  preloadedState: getItemLS(),
+  // preloadedState: getItemLS(),
 });
 
-store.subscribe(() => {
-  const state = store.getState();
-  localStorage.setItem('contacts', JSON.stringify(state));
-});
+// store.subscribe(() => {
+//   const state = store.getState();
+//   localStorage.setItem('contacts', JSON.stringify(state));
+// });

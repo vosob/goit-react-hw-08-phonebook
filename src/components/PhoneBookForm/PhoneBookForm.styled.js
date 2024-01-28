@@ -36,6 +36,11 @@ export const SubmitBtn = styled.button`
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
+
+  &:disabled {
+    border-color: gray;
+    color: gray;
+  }
 `;
 
 export const ValidationError = styled(ErrorMessage)`

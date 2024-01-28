@@ -1,10 +1,18 @@
 import { List, ListItem, DelBtn } from './Contacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactSlice';
-import { useMemo } from 'react';
+import { deleteContact, fetchContacts } from '../../redux/contactApi';
+import { useEffect, useMemo } from 'react';
+import { getIsLoading } from '../../redux/selectors';
 
 const Contacts = () => {
-  const contacts = useSelector(state => state.contact.contacts);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const contacts = useSelector(state => state.contact.contacts.items);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, []);
+
   const filter = useSelector(state => state.filter.filter);
 
   const filteredContacts = useMemo(() => {
@@ -13,15 +21,16 @@ const Contacts = () => {
     );
   }, [contacts, filter]);
 
-  const dispatch = useDispatch();
-
-  console.log(contacts);
   return (
     <List>
       {filteredContacts.map(({ name, id, number }) => (
         <ListItem key={id}>
           {name} {number}
-          <DelBtn type="button" onClick={() => dispatch(deleteContact(id))}>
+          <DelBtn
+            disabled={isLoading}
+            type="button"
+            onClick={() => dispatch(deleteContact(id))}
+          >
             Delete
           </DelBtn>
         </ListItem>

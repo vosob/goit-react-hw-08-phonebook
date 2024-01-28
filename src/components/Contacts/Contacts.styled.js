@@ -23,4 +23,8 @@ export const DelBtn = styled.button`
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
+  &:disabled {
+    color: gray;
+    border-color: gray;
+  }
 `;

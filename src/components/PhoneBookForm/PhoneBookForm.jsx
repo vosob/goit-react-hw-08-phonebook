@@ -7,8 +7,9 @@ import {
   SubmitBtn,
   ValidationError,
 } from './PhoneBookForm.styled';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/contactApi';
+import { getIsLoading } from '../../redux/selectors';
 
 const PhoneBookSchema = Yup.object().shape({
   name: Yup.string().min(3, 'To short!').required('This field is required!'),
@@ -20,6 +21,13 @@ const PhoneBookSchema = Yup.object().shape({
 
 export const PhoneBookForm = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const contacts = useSelector(state => state.contact.contacts.items);
+
+  const isContactExists = contacts.some(
+    contact => contact.name.toLowerCase() === contacts.name
+  );
+
   return (
     <Formik
       initialValues={{
@@ -28,7 +36,12 @@ export const PhoneBookForm = () => {
       }}
       validationSchema={PhoneBookSchema}
       onSubmit={(value, helper) => {
-        dispatch(addContact(value));
+        if (!isContactExists) {
+          alert('The contact already exists!!');
+        } else {
+          dispatch(addContact(value));
+        }
+
         helper.resetForm({
           values: {
             name: '',
@@ -53,7 +66,9 @@ export const PhoneBookForm = () => {
           />
           <ValidationError name="number" component="span" />
         </label>
-        <SubmitBtn type="submit">Add contact</SubmitBtn>
+        <SubmitBtn disabled={isLoading} type="submit">
+          Add contact
+        </SubmitBtn>
       </ContactsBookForm>
     </Formik>
   );
