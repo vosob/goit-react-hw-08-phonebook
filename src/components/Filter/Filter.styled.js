@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const FilterContainer = styled.div`
-  margin-left: 20px;
+  padding-top: 75px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const FilterLabal = styled.label`

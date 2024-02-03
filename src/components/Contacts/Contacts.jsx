@@ -1,4 +1,4 @@
-import { List, ListItem, DelBtn } from './Contacts.styled';
+import { List, ListItem, DelBtn, ContactContainer } from './Contacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, fetchContacts } from '../../redux/contactApi';
 import { useEffect, useMemo } from 'react';
@@ -23,21 +23,24 @@ const Contacts = () => {
   }, [contacts, filter]);
 
   return (
-    <List>
-      {filteredContacts.map(({ name, id, number, phone }) => (
-        <ListItem key={id}>
-          {/* {number ?? phone} */}
-          {name} {number}
-          <DelBtn
-            disabled={isLoading}
-            type="button"
-            onClick={() => dispatch(deleteContact(id))}
-          >
-            Delete
-          </DelBtn>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <ContactContainer>
+        <List>
+          {filteredContacts.map(({ name, id, number, phone }) => (
+            <ListItem key={id}>
+              {name} {number}
+              <DelBtn
+                disabled={isLoading}
+                type="button"
+                onClick={() => dispatch(deleteContact(id))}
+              >
+                Delete
+              </DelBtn>
+            </ListItem>
+          ))}
+        </List>
+      </ContactContainer>
+    </>
   );
 };
 

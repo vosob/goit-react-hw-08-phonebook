@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  margin-top: 5px;
-  padding-left: 20px;
+  /* margin-top: 5px;
+  padding-left: 20px; */
 `;
 export const ListItem = styled.li`
   list-style: none;
@@ -27,4 +27,10 @@ export const DelBtn = styled.button`
     color: gray;
     border-color: gray;
   }
+`;
+
+export const ContactContainer = styled.div`
+  padding-top: 25px;
+  display: flex;
+  justify-content: center;
 `;

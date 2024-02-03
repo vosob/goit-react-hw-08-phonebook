@@ -1,32 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
-export const ContactsBookForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const ContactContainer = styled.main`
-  padding-top: 75px;
-  display: flex;
-  justify-content: center;
-`;
-
-export const Title = styled.h1`
-  text-align: center;
-  padding-top: 25px;
-`;
-
-export const ContactsBookInput = styled(Field)`
-  margin-left: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 25px;
-  width: 325px;
-  height: 35px;
-  display: flex;
-`;
-
 export const Text = styled.p`
   padding-left: 20px;
   font-size: 20px;
@@ -34,6 +8,32 @@ export const Text = styled.p`
   margin-bottom: 5px;
   color: #2a2a2a;
   font-weight: 600;
+`;
+
+export const Title = styled.h1`
+  text-align: center;
+  padding-top: 25px;
+`;
+
+export const RegisterForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+`;
+
+export const ValidationError = styled(ErrorMessage)`
+  margin-left: 20px;
+  color: red;
+`;
+
+export const Input = styled(Field)`
+  margin-left: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 25px;
+  width: 325px;
+  height: 35px;
+  display: flex;
 `;
 
 export const SubmitBtn = styled.button`
@@ -54,7 +54,8 @@ export const SubmitBtn = styled.button`
   }
 `;
 
-export const ValidationError = styled(ErrorMessage)`
-  margin-left: 20px;
-  color: red;
+export const RegisterContainer = styled.main`
+  padding-top: 75px;
+  display: flex;
+  justify-content: center;
 `;
